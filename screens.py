@@ -34,7 +34,7 @@ def mainScreen():
     ]
     col2 = [
         [p.T('Choose Blobs Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_BLOBS_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.Input('', key='_BLOBS_'), p.FilesBrowse(button_color=('white', '#4286f4'))],
         [p.T('Choose Baseband Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_BASE_'), p.FileBrowse(button_color=('white', '#4286f4'))],
         [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_")]
