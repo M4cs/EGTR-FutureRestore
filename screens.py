@@ -30,7 +30,7 @@ def mainScreen():
         [p.Input('', key='_IPSW_'), p.FileBrowse(button_color=('white', '#4286f4'))],
         [p.T('Choose SEP Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_SEP_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest SEP', key='_LATESTSEP_')],
+        [p.Checkbox('Use Latest SEP', key='_LATESTSEP_', disabled=True)],
         [p.T('Optional: SEP Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_SEPMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))]
     ]
@@ -39,7 +39,7 @@ def mainScreen():
         [p.Input('', key='_BLOBS_'), p.FilesBrowse(button_color=('white', '#4286f4'))],
         [p.T('Choose Baseband Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_BASE_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_")],
+        [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_", disabled=True)],
         [p.T('Optional: Baseband Build Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_BASEMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))],
         [p.Checkbox('No Baseband', key='_NOBASEBAND_')]
@@ -144,7 +144,7 @@ def mainScreen():
                 futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore')
             elif getTypeFutureRestore() == 2:
                 futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore.exe')
-            query = futurerestore + blobs_path + base_path + sep_path + latestbase + latestsep + debug + basemani + sepmani + update + nobaseband + wait + ipsw_path
+            query = futurerestore + blobs_path + base_path + sep_path + debug + basemani + sepmani + update + nobaseband + wait + ipsw_path
             print(query)
             outputscreen = p.Window('Logs:', no_titlebar=True, keep_on_top=True, grab_anywhere=True).Layout(
                 [[p.T('Are You Sure? You may risk bootlooping or bricking your device! ')],
