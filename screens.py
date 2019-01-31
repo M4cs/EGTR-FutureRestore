@@ -30,19 +30,25 @@ def mainScreen():
         [p.Input('', key='_IPSW_'), p.FileBrowse(button_color=('white', '#4286f4'))],
         [p.T('Choose SEP Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_SEP_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest SEP', key='_LATESTSEP_')]
+        [p.Checkbox('Use Latest SEP', key='_LATESTSEP_')],
+        [p.T('Optional: SEP Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_SEPMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))]
     ]
     col2 = [
         [p.T('Choose Blobs Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_BLOBS_'), p.FilesBrowse(button_color=('white', '#4286f4'))],
         [p.T('Choose Baseband Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
         [p.Input('', key='_BASE_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_")]
+        [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_")],
+        [p.T('Optional: Baseband Build Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_BASEMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.Checkbox('No Baseband', key='_NOBASEBAND_')]
     ]
     layout = [
         [p.Image(data_base64=Images.logo, background_color='white', size=(450, 100), click_submits=True, key='_IMAGE_')],
         [p.Column(col1), p.VerticalSeparator(), p.Column(col2)],
-        [p.Checkbox('Debug', key='_DEBUG_')],
+        [p.T('Optional Flags: ', justification='center')],
+        [p.Checkbox('Debug', key='_DEBUG_'), p.Checkbox('Update', key='_UPDATE_'), p.Checkbox('Wait', key="_WAIT_")],
         [p.Button('Exit'), p.Button('Start')],
         [p.Button('Donate')]
     ]
@@ -108,14 +114,37 @@ def mainScreen():
             elif values['_BLOBS_'] != '':
                 blobs_path = '-t ' + getRealPath(values['_BLOBS_'])
             if values['_DEBUG_'] == True:
-                debug = '-d '
+                debug = '-d'
             elif values['_DEBUG_'] == False:
                 debug = ''
+            if values['_BASEMANI_'] == '':
+                basemani = ''
+            elif values['_BASEMANI_'] != '':
+                basemani = '-p ' + values['_BASEMANI_']
+            if values['_SEPMANI_'] == '':
+                sepmani = ''
+            elif values['_SEPMANI_'] != '':
+                sepmani = '-m ' + values['_SEPMANI_']
+            if values['_NOBASEBAND_'] == True:
+                nobaseband = '--no-baseband'
+                base_path = ''
+                basemani = ''
+            elif values['_NOBASEBAND_'] == False:
+                nobaseband = ''
+            if values['_UPDATE_'] == True:
+                update = '-u'
+            elif values['_UPDATE_'] == False:
+                update = ''
+            if values['_WAIT_'] == True:
+                wait = '-w'
+            elif values['_WAIT_'] == False:
+                wait = ''
+                
             if getTypeFutureRestore() == 1:
                 futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore')
             elif getTypeFutureRestore() == 2:
                 futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore.exe')
-            query = futurerestore + " " + blobs_path + " " + base_path + " " + sep_path + latestbase + " " + latestsep + " " + debug + " " + ipsw_path
+            query = futurerestore + " " + blobs_path + " " + base_path + " " + sep_path + latestbase + " " + latestsep + " " + debug + " " + basemani + " " + sepmani + " " + " " + update + " " + nobaseband + " " + wait + " " + ipsw_path
             outputscreen = p.Window('Logs:', no_titlebar=True, keep_on_top=True, grab_anywhere=True).Layout(
                 [[p.T('Are You Sure? You may risk bootlooping or bricking your device! ')],
                 [p.Button('Cancel'), p.Button('Continue')]])

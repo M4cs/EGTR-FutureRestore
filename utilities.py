@@ -30,8 +30,8 @@ def downloadFutureRestore():
         name = "/futurerestore.exe"
     elif platform == "linux1" or platform == "linux2" or platform == "darwin":
         name = "/futurerestore"
-    open(DOWNLOAD_DIRECTORY + "futurerestore.zip", 'wb').write(r.content)
-    zip_ref = zipfile.ZipFile(DOWNLOAD_DIRECTORY + "futurerestore.zip", 'r')
+    open(DOWNLOAD_DIRECTORY + "/futurerestore.zip", 'wb').write(r.content)
+    zip_ref = zipfile.ZipFile(DOWNLOAD_DIRECTORY + "/futurerestore.zip", 'r')
     zip_ref.extractall(DOWNLOAD_DIRECTORY)
     zip_ref.close()
 
