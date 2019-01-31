@@ -1,7 +1,7 @@
 <p align='center'>
   <a href=''><img src='https://i.imgur.com/5p5aqcj.png'></a>
   <h1 align='center'>EGTR - Cross Platform GUI for FutureRestore</h1>
-  <a href=''><img src="https://i.imgur.com/QVHQy96.png"></a>
+  <a href=''><img src="https://i.imgur.com/gsvlbJx.png"></a>
 </p>
 
 # Introduction:
