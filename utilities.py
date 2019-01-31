@@ -13,7 +13,7 @@ def getRealPath(path):
 DOWNLOAD_DIRECTORY = getRealPath(CURRENT_DIRECTORY + "/download/")
 
 def getFutureRestore():
-    if platform == "linux1" or platform == "linux2":
+    if platform == "linux" or platform == "linux1" or platform == "linux2":
         git_link = "https://github.com/s0uthwest/futurerestore/releases/download/191/futurerestore_linux_v191.zip"
     elif platform == "darwin":
         git_link = "https://github.com/s0uthwest/futurerestore/releases/download/224/futurerestore_macOS_v224.zip"
@@ -28,7 +28,7 @@ def downloadFutureRestore():
     r = requests.get(git_link, allow_redirects=True)
     if platform == "win32" or platform == "win64":
         name = "/futurerestore.exe"
-    elif platform == "linux1" or platform == "linux2" or platform == "darwin":
+    elif platform == "linux" or platform == "linux1" or platform == "linux2" or platform == "darwin":
         name = "/futurerestore"
     open(DOWNLOAD_DIRECTORY + "/futurerestore.zip", 'wb').write(r.content)
     zip_ref = zipfile.ZipFile(DOWNLOAD_DIRECTORY + "/futurerestore.zip", 'r')
@@ -41,8 +41,8 @@ def checkFutureRestore():
             return True
         else:
             return False
-    elif platform == "linux1" or platform == "linux2" or platform == "darwin":
-        if os.path.exists(getRealPath(DOWNLOAD_DIRECTORY + "/futuresrestore")):
+    elif platform == "linux" or platform == "linux1" or platform == "linux2" or platform == "darwin":
+        if os.path.exists(getRealPath(DOWNLOAD_DIRECTORY + "/futurerestore")):
             return True
         else:
             return False
@@ -50,7 +50,7 @@ def checkFutureRestore():
         return False
 
 def getTypeFutureRestore():
-    if platform == 'linux1' or platform == 'linux2' or platform == 'darwin':
+    if platform == 'linux' or platform == 'linux1' or platform == 'linux2' or platform == 'darwin':
         return 1
     elif platform == 'win32' or platform == 'win64':
         return 2
