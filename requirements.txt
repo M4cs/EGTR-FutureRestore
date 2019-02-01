@@ -1,4 +1,3 @@
 PySide2
 PyQt5
 requests
-webbrowser

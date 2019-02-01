@@ -34,7 +34,8 @@ def downloadFutureRestore():
     zip_ref = zipfile.ZipFile(DOWNLOAD_DIRECTORY + "/futurerestore.zip", 'r')
     zip_ref.extractall(DOWNLOAD_DIRECTORY)
     zip_ref.close()
-
+    if platform == 'linux' or platform == "linux1" or platform == "linux2" or platform == "darwin":
+        os.chmod(DOWNLOAD_DIRECTORY + '/futurerestore', '+x')
 def checkFutureRestore():
     if platform == "win32" or platform == "win64":
         if os.path.exists(getRealPath(DOWNLOAD_DIRECTORY + "/futurerestore.exe")):

@@ -19,6 +19,10 @@ EGTR stands for Easy Gui To Restore. I couldn't think of a name so I just went w
 
 # Changelog:
 
+### 1.0.5:
+
+- UI Update, Added Exit Recovery Mode, Fixed Some Bugs :)
+
 ### 1.0.3 & 1.0.4:
 
 - Removed and then added back Latest SEP and Baseband

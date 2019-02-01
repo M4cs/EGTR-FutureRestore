@@ -25,32 +25,35 @@ def futureRestoreQuestion():
 
 def mainScreen():
     p.SetOptions(background_color='white', button_color=('white', '#4286f4'))
-    col1 = [
-        [p.T('Choose IPSW Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_IPSW_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.T('Choose SEP Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_SEP_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest SEP', key='_LATESTSEP_')],
-        [p.T('Optional: SEP Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_SEPMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))]
-    ]
-    col2 = [
-        [p.T('Choose Blobs Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_BLOBS_'), p.FilesBrowse(button_color=('white', '#4286f4'))],
-        [p.T('Choose Baseband Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_BASE_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('Use Latest Baseband', key="_LATESTBASE_")],
-        [p.T('Optional: Baseband Build Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
-        [p.Input('', key='_BASEMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))],
-        [p.Checkbox('No Baseband', key='_NOBASEBAND_')]
-    ]
     layout = [
         [p.Image(data_base64=Images.logo, background_color='white', size=(450, 100), click_submits=True, key='_IMAGE_')],
-        [p.Column(col1), p.VerticalSeparator(), p.Column(col2)],
-        [p.T('Optional Flags: ', justification='center')],
-        [p.Checkbox('Debug', key='_DEBUG_'), p.Checkbox('Update', key='_UPDATE_'), p.Checkbox('Wait', key="_WAIT_")],
-        [p.Button('Exit'), p.Button('Start')],
-        [p.Button('Donate')]
+        [p.T('Required:', font=('Arial', 13, 'bold'), justification='center')],
+        [p.T('▬' * 37)],
+        [p.T('Choose IPSW Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_IPSW_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.T('Choose Blobs Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_BLOBS_'), p.FilesBrowse(button_color=('white', '#4286f4'))],
+        [p.T('Choose SEP Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_SEP_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.Checkbox('Use Latest SEP \n(Do Not Set SEP Filepath If Using This!)', key='_LATESTSEP_')],
+        [p.T('Choose Baseband Filepath: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_BASE_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.Checkbox('Use Latest Baseband \n(Do Not Set Baseband Filepath If Using This!)', key="_LATESTBASE_")],
+        [p.T('Optional: ', font=('Arial', 13, 'bold'), justification='center')],
+        [p.T('▬' * 37)],
+        [p.T('SEP Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_SEPMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.T('Baseband Build Manifest: ', font=('Arial', 10, 'italic'), justification='left')],
+        [p.Input('', key='_BASEMANI_'), p.FileBrowse(button_color=('white', '#4286f4'))],
+        [p.T('Optional Flags:', justification='center', font=('Arial', 13, 'bold'))],
+        [p.T('▬' * 37)],
+        [p.Checkbox('Debug', key='_DEBUG_'), p.Checkbox('No Baseband', key='_NOBASEBAND_')],
+        [p.Checkbox('Update', key='_UPDATE_'), p.Checkbox('Wait', key="_WAIT_")],
+        [p.T('▬' * 37)],
+        [p.Button('Exit Recovery', size=(23, 1)), p.Button('Start', size=(23, 1))],
+        [p.Button('Exit', size=(23, 1)), p.Button('Donate', size=(23, 1))],
+        [p.Button('Open TSSSaver', size=(23, 1)), p.Button('Open ipsw.me', size=(23, 1))],
+        [p.T('\nVersion: 1.0.5 | Licensed Under GNU GPLv3 | Click Here For GitHub', click_submits=True, key='_FOOTER_', font=('Arial', 8, 'italic'), justification='center')]
     ]
     
     window = p.Window('EGTR', no_titlebar=True, keep_on_top=True, grab_anywhere=True).Layout(layout)
@@ -61,6 +64,12 @@ def mainScreen():
             break
         elif event == 'Donate':
             webbrowser.open_new_tab('https://paypal.me/m4csdev')
+        elif event == 'Open TSSSaver':
+            webbrowser.open_new_tab('https://tsssaver.1conan.com/')
+        elif event == 'Open ipsw.me':
+            webbrowser.open_new_tab('https://ipsw.me')
+        elif event == '_FOOTER_':
+            webbrowser.open_new_tab('https://github.com/M4cs/EGTR-Futurerestore')
         elif event == 'Start':
             if values['_LATESTSEP_'] == True:
                 latestsep = ' --latest-sep'
@@ -154,10 +163,11 @@ def mainScreen():
                 if event == 'Continue':
                     p.Window('Logs:', no_titlebar=True, keep_on_top=True, grab_anywhere=True, auto_close=True, auto_close_duration=5).Layout(
                 [[p.T('Refer To The Terminal For Output ')]]).Read()
+                    outputscreen.Close()
                     os.system(query)
                     break
                 elif event == 'Cancel':
                     outputscreen.Close()
                     break
     window.Close()
-            
+        
