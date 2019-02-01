@@ -62,6 +62,14 @@ def mainScreen():
         if event == 'Exit':
             window.Close()
             break
+        elif event == 'Exit Recovery':
+            if getTypeFutureRestore() == 1:
+                futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore')
+            elif getTypeFutureRestore() == 2:
+                futurerestore = getRealPath(DOWNLOAD_DIRECTORY + '/futurerestore.exe')
+            os.system(futurerestore + '--exit-recovery')
+            p.Window('Logs:', no_titlebar=True, keep_on_top=True, grab_anywhere=True, auto_close=True, auto_close_duration=5).Layout(
+                [[p.T('Refer To The Terminal For Output ')]]).Read()
         elif event == 'Donate':
             webbrowser.open_new_tab('https://paypal.me/m4csdev')
         elif event == 'Open TSSSaver':
