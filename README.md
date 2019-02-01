@@ -45,7 +45,7 @@ EGTR stands for Easy Gui To Restore. I couldn't think of a name so I just went w
 
 ### Tk, Qt, and Wx:
 
-You can use different backend libraries for EGTR's GUI. If you would like to do so simple install either `PySimpleGUI` (TKinter), `PySimpleGUIWx` (Wx) or, `PySimpleGUIQt` (Qt5/PySide2) for Qt.
+You can use different backend libraries for EGTR's GUI. If you would like to do so simple install either `PySimpleGUI` (TKinter), `PySimpleGUIWx` (Wx) or, `PySimpleGUIQt` (Qt5/PySide2) for Qt. After installing these with `pip` just change the imports in `screens.py` to whatever library you'd like to use.
 
 ### Steps:
 
