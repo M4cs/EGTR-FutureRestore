@@ -1,5 +1,5 @@
 <p align='center'>
-  <a href=''><img src="https://i.imgur.com/gsvlbJx.png"></a>
+  <a href=''><img src="https://cdn.discordapp.com/attachments/422105201605083136/540718008662753310/unknown.png"></a>
   <h1 align='center'>EGTR - Cross Platform GUI for FutureRestore</h1>
 </p>
 
