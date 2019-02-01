@@ -43,6 +43,10 @@ EGTR stands for Easy Gui To Restore. I couldn't think of a name so I just went w
 - Python 3.6+
 - An Internet Connection
 
+### Tk, Qt, and Wx:
+
+You can use different backend libraries for EGTR's GUI. If you would like to do so simple install either `PySimpleGUI` (TKinter), `PySimpleGUIWx` (Wx) or, `PySimpleGUIQt` (Qt5/PySide2) for Qt.
+
 ### Steps:
 
 1. Clone or download this repository,
