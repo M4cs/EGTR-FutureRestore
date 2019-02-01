@@ -5,7 +5,7 @@
 
 Developer: [@maxbridgland](https://twitter.com/maxbridgland)
 
-Version: 1.0.2
+Version: 1.0.5
 
 Release Date: 01/31/2019
 
