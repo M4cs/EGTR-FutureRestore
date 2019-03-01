@@ -53,7 +53,7 @@ def mainScreen():
         [p.Button('Exit Recovery', size=(23, 1)), p.Button('Start', size=(23, 1))],
         [p.Button('Exit', size=(23, 1)), p.Button('Donate', size=(23, 1))],
         [p.Button('Open TSSSaver', size=(23, 1)), p.Button('Open ipsw.me', size=(23, 1))],
-        [p.T('\nVersion: 1.0.5 | Licensed Under GNU GPLv3 | Click Here For GitHub', click_submits=True, key='_FOOTER_', font=('Arial', 8, 'italic'), justification='center')]
+        [p.T('\nVersion: 1.0.6 | Licensed Under GNU GPLv3 | Click Here For GitHub', click_submits=True, key='_FOOTER_', font=('Arial', 8, 'italic'), justification='center')]
     ]
     
     window = p.Window('EGTR', no_titlebar=True, keep_on_top=True, grab_anywhere=True).Layout(layout)
