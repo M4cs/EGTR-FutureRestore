@@ -16,9 +16,9 @@ def getFutureRestore():
     if platform == "linux" or platform == "linux1" or platform == "linux2":
         git_link = "https://github.com/s0uthwest/futurerestore/releases/download/191/futurerestore_linux_v191.zip"
     elif platform == "darwin":
-        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/224/futurerestore_macOS_v224.zip"
+        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/231/futurerestore_v231_macOS.zip"
     elif platform == "win32" or platform == "win64":
-        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/224/futurerestore_win64_v224.zip"
+        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/231/futurerestore_v231_win64.zip"
     else:
         git_link = ""
     return git_link
@@ -35,7 +35,7 @@ def downloadFutureRestore():
     zip_ref.extractall(DOWNLOAD_DIRECTORY)
     zip_ref.close()
     if platform == 'linux' or platform == "linux1" or platform == "linux2" or platform == "darwin":
-        os.chmod(DOWNLOAD_DIRECTORY + '/futurerestore', 775)
+        os.chmod(DOWNLOAD_DIRECTORY + '/futurerestore', 777)
 def checkFutureRestore():
     if platform == "win32" or platform == "win64":
         if os.path.exists(getRealPath(DOWNLOAD_DIRECTORY + "/futurerestore.exe")):
