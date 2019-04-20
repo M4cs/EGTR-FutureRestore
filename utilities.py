@@ -16,9 +16,9 @@ def getFutureRestore():
     if platform == "linux" or platform == "linux1" or platform == "linux2":
         git_link = "https://github.com/s0uthwest/futurerestore/releases/download/191/futurerestore_linux_v191.zip"
     elif platform == "darwin":
-        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/224/futurerestore_macOS_v224.zip"
+        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/231/futurerestore_v231_macOS.zip"
     elif platform == "win32" or platform == "win64":
-        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/224/futurerestore_win64_v224.zip"
+        git_link = "https://github.com/s0uthwest/futurerestore/releases/download/231/futurerestore_v231_win64.zip"
     else:
         git_link = ""
     return git_link
